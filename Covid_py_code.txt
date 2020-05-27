@@ -1,0 +1,20 @@
+import numpy as np
+import pandas as pd
+import seaborn as sb
+import matplotlib.pyplot as plot
+from math import pi
+cvd=pd.read_csv('C:\\Users\\vedan\\Desktop\\COVID tracker\\covid_19_india.csv')
+cvd.describe()
+cvd.groupby(['Date'])['Confirmed','Cured','Deaths','State/UnionTerritory'].max()
+plot.figure(figsize=(10,10))
+cvd['State/UnionTerritory'].value_counts().plot.pie(autopct="%1.1f%%")
+fig=plot.figure(figsize=(20,10))
+ax=fig.add_subplot(111)
+ax.set_title("Covid plot")
+y=cvd['Confirmed']
+x=cvd['Date']
+plot.ylabel("Confirmed")
+plot.xlabel("Dates")
+plot.scatter(x,y)#Shows Scatter plot of the data wherein total confirmed cases are seen growing exponentially
+ax.plot(x,y)
+plot.show()
